@@ -110,9 +110,7 @@ Resources:
           #!/bin/bash
 
           # Install, configure and start tailscale client
-          rpm -i $(curl -s https://tailscale.com/kb/1029/install-files | grep -oP 'https://(.*)tailscale-relay-(.*).x86_64.rpm')
-          sed -i 's/ACL_FILE/#ACL_FILE/'  /etc/default/tailscale-relay
-          systemctl enable tailscale-relay
+          curl -fsSL https://tailscale.com/install.sh | sh
 
   PrivateSubnetSecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
